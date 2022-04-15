@@ -61,13 +61,13 @@ namespace VinylFlamingo.TrendDotNet
         /// <param name="name">The name of the factor ex: "page views"</param>
         /// <param name="hits">The quantity this factor has</param>
         /// <param name="weight">How strongly should the scorer consider this factor.</param>
-        public void AddFactor([Optional]string name, [Optional] double? hits, [Optional]double? weight)
+        public void AddFactor(string name = "generic",  double hits = 0, double weight = 1)
         {
             Factor factor = new Factor()
             {
-                Name = name ?? "generic",
-                Hits = hits ?? 0,
-                Weight = weight ?? 1
+                Name = name,
+                Hits = hits,
+                Weight = weight
             };
 
             Factors.Add(factor);
