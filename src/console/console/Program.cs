@@ -6,14 +6,15 @@ public class Program
     {
         var trendService = new Scorer();
 
-        trendService.AddFactor("page views", 1700202002, 1);
+        trendService.AddFactor();
+        
 
-        foreach(var factor in trendService.Factors)
+        foreach (var factor in trendService.Factors)
         {
             Console.WriteLine(factor.Name.ToString());
         }
 
-        Console.WriteLine(trendService.Calculate(45));
+        
     }
     
 

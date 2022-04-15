@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -60,13 +61,13 @@ namespace VinylFlamingo.TrendDotNet
         /// <param name="name">The name of the factor ex: "page views"</param>
         /// <param name="hits">The quantity this factor has</param>
         /// <param name="weight">How strongly should the scorer consider this factor.</param>
-        public void AddFactor(string name, double hits, double weight)
+        public void AddFactor([Optional]string name, [Optional] double? hits, [Optional]double? weight)
         {
             Factor factor = new Factor()
             {
-                Name = name,
-                Hits = hits,
-                Weight = weight
+                Name = name ?? "generic",
+                Hits = hits ?? 0,
+                Weight = weight ?? 1
             };
 
             Factors.Add(factor);
@@ -80,9 +81,9 @@ namespace VinylFlamingo.TrendDotNet
     }
     public class Factor
     {
-        public string Name { get; set; } = "generic";
-        public double Hits { get; set; } = 0;
-        public double Weight { get; set; } = 1;
+        public string Name { get; set; }
+        public double Hits { get; set; }
+        public double Weight { get; set; }
 
 
     }
